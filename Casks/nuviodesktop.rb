@@ -12,7 +12,7 @@ cask "nuviodesktop" do
   app "Nuvio.app"
 
   postflight do
-    ohai "Patching Nuvio with bash script"
+    ohai "Patching Nuvio with bash script (requires admin password)"
 
     system_command "/bin/bash",
       args: [
@@ -80,6 +80,6 @@ cask "nuviodesktop" do
       ],
       sudo: true
 
-    ohai "Nuvio patched, good to go."
+    ohai "Nuvio patched, good to go"
   end
 end
