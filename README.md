@@ -35,7 +35,7 @@ If you want to uninstall Nuvio Desktop and remove this tap from your system, run
 
 ```bash
 # Remove the application
-brew uninstall --cask nuvio
+brew uninstall --cask nuvio --zap
 ```
 ```bash
 # Remove the tap
