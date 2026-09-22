@@ -12,12 +12,9 @@ cask "nuvio" do
   app "Nuvio.app"
 
   postflight_steps do
-    ohai "Patching Nuvio with bash script (requires admin password)"
-
-    system_command "/bin/bash",
+    run "/bin/bash",
       args: [
         "-c",
-        # We use single quotes (<<~'EOS') so Ruby doesn't try to parse the bash variables
         <<~'EOS'
           set -euo pipefail
 
@@ -79,7 +76,5 @@ cask "nuvio" do
         EOS
       ],
       sudo: true
-
-    ohai "Nuvio patched, good to go"
   end
 end
