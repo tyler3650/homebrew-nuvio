@@ -1,7 +1,7 @@
 cask "nuviodesktop" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "0.1.23-alpha"
+  version "0.1.25-alpha"
   sha256 :no_check
 
   url "https://github.com/NuvioMedia/NuvioDesktop/releases/download/#{version}/Nuvio-macOS-#{arch}-#{version}.dmg"
@@ -11,7 +11,7 @@ cask "nuviodesktop" do
 
   app "Nuvio.app"
 
-  postflight do
+  postflight_steps do
     ohai "Patching Nuvio with bash script (requires admin password)"
 
     system_command "/bin/bash",
