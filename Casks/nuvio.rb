@@ -1,13 +1,20 @@
 cask "nuvio" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "0.1.30-alpha"
-  sha256 :no_check
+  version "0.1.31-alpha"
+  sha256 arm:   "380c98b78373a01a6701f81bc8c765a92fa33ab5fb8bf4d7395df55a5f2b4e7c",
+         intel: "2f3590ed780aeb1023fe4790abe518f471822e9d250eee0bc3bed73c69ee03ec"
 
   url "https://github.com/NuvioMedia/NuvioDesktop/releases/download/#{version}/Nuvio-macOS-#{arch}-#{version}.dmg"
   name "Nuvio Desktop"
   desc "Nuvio Desktop is a media client for browsing metadata, managing collections and watch progress, downloading media, and playing streams from user-installed extensions or user-provided sources."
   homepage "https://nuvio.tv/"
+
+  livecheck do
+    url :url
+    regex(/^v?(\d+(?:\.\d+)+(?:-[a-z0-9.]+)?)$/i)
+    strategy :github_latest
+  end
 
   app "Nuvio.app"
 
