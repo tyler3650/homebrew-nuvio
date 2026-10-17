@@ -1,49 +1,25 @@
-name: Update Cask
+name: Bump packages
 
 on:
   schedule:
     # Run every 6 hours
     - cron: "0 */6 * * *"
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Target release version (e.g. 0.1.31-alpha). Leave blank for latest."
-        required: false
-        type: string
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
-  update-cask:
-    runs-on: ubuntu-latest
+  autobump:
+    runs-on: macos-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Bump packages
+        uses: Homebrew/actions/bump-packages@main
         with:
-          python-version: "3.x"
-
-      - name: Check upstream release and update cask
-        id: update
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ARGS=()
-          if [ -n "${{ inputs.version }}" ]; then
-            ARGS+=(--version "${{ inputs.version }}")
-          fi
-          python3 scripts/update-cask.py "${ARGS[@]}"
-
-      - name: Commit and push changes
-        if: steps.update.outputs.updated == 'true'
-        run: |
-          git config user.name "Tyler O'Farrell"
-          git config user.email "tylerofarrell3650@gmail.com"
-          git add Casks/nuvio.rb
-          git commit -m "nuvio ${{ steps.update.outputs.version }}
-
-          Co-authored-by: Google Antigravity <google-antigravity@users.noreply.github.com>"
-          git push origin HEAD:${{ github.ref_name }}
+          token: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN || secrets.GITHUB_TOKEN }}
+          casks: nuvio
+          fork: false
