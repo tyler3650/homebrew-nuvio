@@ -6,7 +6,7 @@ Nuvio Desktop is a cross-platform media client for browsing metadata, managing c
 
 ## Malware Issues With Nuvio's .dmg File
 
-This should fix the issue where Nuvio's .dmg file is flagged as malware, and allow you to install Nuvio directly onto macOS with no security warnings (will recure your admin passoword to run).
+This should fix the issue where Nuvio's .dmg file is flagged as malware, and allow you to install Nuvio directly onto macOS with no security warnings (will recquire your admin passoword to run).
 
 ## Install
 
