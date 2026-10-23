@@ -7,10 +7,8 @@ cask "nuvio" do
 
   url "https://github.com/NuvioMedia/NuvioDesktop/releases/download/#{version}/Nuvio-macOS-#{arch}-#{version}.dmg"
   name "Nuvio Desktop"
-  desc "A free, open-source media app for Windows, macOS, and Linux."
+  desc "Free, open-source media app"
   homepage "https://nuvio.tv/"
-
-  depends_on macos: :big_sur
 
   livecheck do
     url :url
@@ -18,20 +16,22 @@ cask "nuvio" do
     strategy :github_latest
   end
 
-  app "Nuvio.app"
+  depends_on :macos
 
-  zap trash: [
-    "~/Library/Application Support/Nuvio",
-    "~/Library/Caches/com.nuvio.media.desktop",
-    "~/Library/Caches/Nuvio",
-    "~/Library/HTTPStorages/com.nuvio.media.desktop",
-    "~/Library/WebKit/com.nuvio.media.desktop",
-    "/private/var/folders/nz/nxxfvw7x6vjchgyr76bscbq80000gn/C/com.nuvio.media.desktop",
-  ]
+  app "Nuvio.app"
 
   postflight_steps do
     # The upstream app is ad-hoc signed but not notarized.
     run "/usr/bin/xattr",
         args: ["-dr", "com.apple.quarantine", "{{appdir}}/Nuvio.app"]
   end
+
+  zap trash: [
+    "/private/var/folders/nz/nxxfvw7x6vjchgyr76bscbq80000gn/C/com.nuvio.media.desktop",
+    "~/Library/Application Support/Nuvio",
+    "~/Library/Caches/com.nuvio.media.desktop",
+    "~/Library/Caches/Nuvio",
+    "~/Library/HTTPStorages/com.nuvio.media.desktop",
+    "~/Library/WebKit/com.nuvio.media.desktop",
+  ]
 end
