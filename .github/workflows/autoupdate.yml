@@ -23,3 +23,12 @@ jobs:
           token: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN || secrets.GITHUB_TOKEN }}
           casks: nuvio
           fork: false
+
+      - name: Auto-merge PR
+        run: |
+          for pr in $(gh pr list --json number,headRefName --jq '.[] | select(.headRefName | startswith("bump-")) | .number'); do
+            gh pr merge "$pr" --squash --delete-branch
+          done
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
