@@ -7,7 +7,7 @@ cask "nuvio" do
 
   url "https://github.com/NuvioMedia/NuvioDesktop/releases/download/#{version}/Nuvio-macOS-#{arch}-#{version}.dmg"
   name "Nuvio Desktop"
-  desc "Nuvio Desktop is a media client for browsing metadata, managing collections and watch progress, downloading media, and playing streams from user-installed extensions or user-provided sources."
+  desc "A free, open-source media app for Windows, macOS, and Linux."
   homepage "https://nuvio.tv/"
 
   depends_on macos: :big_sur
