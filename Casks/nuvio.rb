@@ -10,6 +10,8 @@ cask "nuvio" do
   desc "Nuvio Desktop is a media client for browsing metadata, managing collections and watch progress, downloading media, and playing streams from user-installed extensions or user-provided sources."
   homepage "https://nuvio.tv/"
 
+  depends_on macos: ">= :big_sur"
+
   livecheck do
     url :url
     regex(/^v?(\d+(?:\.\d+)+(?:-[a-z0-9.]+)?)$/i)
