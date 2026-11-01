@@ -1,4 +1,4 @@
-# homebrew-nuvio
+# Homebrew tap for Nuvio
 
 This is a custom Homebrew tap for [Nuvio Desktop](https://github.com/NuvioMedia/NuvioDesktop). 
 
