@@ -1,9 +1,9 @@
 cask "nuvio" do
   arch arm: "arm64", intel: "x86_64"
 
-  version "0.1.33-alpha"
-  sha256 arm:   "2dcab2bf5cb84274b6b677ff92348951696d526470b80b59f6d9077eb298724a",
-         intel: "a89237c978efb593258ba3b32c38d2a99e101e5242fd4e8975e76efafd61b6e0"
+  version "0.1.34-alpha"
+  sha256 arm:   "497856e825f4efe1a27d286de7925dc5b7abbd7644ec6b0ae2abdf6df4e75e94",
+         intel: "058e4657d5b08af08ca54e93d6aae0109c9af601251e6d29a35c688d16dbc517"
 
   url "https://github.com/NuvioMedia/NuvioDesktop/releases/download/#{version}/Nuvio-macOS-#{arch}-#{version}.dmg"
   name "Nuvio Desktop"
